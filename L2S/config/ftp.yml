@@ -1,0 +1,9 @@
+#This file contains path for the FTP repository associated to the code.
+#It should not be modified
+
+url: 'ftp://ftp.nersc.no/reddaml/'
+
+test: 'L2S/simul/test'
+train: 'L2S/simul/train'
+weight: 'L2S/weights'
+
