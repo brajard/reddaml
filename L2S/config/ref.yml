@@ -14,10 +14,13 @@ params:
 
  #Fitering of the training set after DA (size of the window used for averaging in  number of time steps):
  Nfil_train: [1]
+ 
+ #Time length of the simulation
+ T: [15]
 
 #Name of the files
 files:
-# truth: 'simul-truth-N{N}-seed{seed}.npz'
+ truth: 'simul-truth-T{T}-N{N}-seed{seed}.npz'
  hybrid: 'simul-hybrid-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}-N{N}-seed{seed}.npz'
 # perfect: 'simul-perfect-dtObs{dtObs}-N{N}-seed{seed}.npz'
 # trunc: 'simul-trunc-N{N}-seed{seed}.npz'
