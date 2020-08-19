@@ -18,15 +18,16 @@ def path(pathname):
     os.makedirs(return_path, exist_ok=True)
     return return_path
 
+default_param = {'p': 36, 'std_o': 1, 'dtObs': 0.05, 'dt':0.01, 'Nfil_train':1, 'N': 20, 'seed': 10}
 
-def isint(x):
-    return round(x)==x
+int_list = {'p','N','seed','Nfil_train'}
 
-def autoconvert(x):
-    if isint(x):
-        return int(x)
+
+def convert(k,v):
+    if k in int_list:
+        return int(v)
     else:
-        return x
+        return v
 
 def get_params(lparam,default_param):
     """Get the list of all the parameters (including the default ones)"""
@@ -46,7 +47,7 @@ def get_filenames(config, default_param):
     filenames = dict()
     def get_name(row):
         dparam = {**default_param,**dict(row)}
-        dparam_convert = {k:autoconvert(v) for k,v in dparam.items()}
+        dparam_convert = {k:convert(k,v) for k,v in dparam.items()}
         return files[file].format(**dparam_convert)
     for file in files:
         filenames[file] = pd.DataFrame(seq_param)
@@ -55,6 +56,8 @@ def get_filenames(config, default_param):
     return filenames
 
 def load_data(indir,fname,ftpurl=None,ftpdir=None,):
+    """Load data in the file fname from the the indir.
+    If ftpurl and ftpdir are set, first download the data from the ftp url"""
     if ftpurl:
         assert ftpdir, 'if ftpurl is set, the argument ftpdir has to be set'
         full_url = os.path.join(ftpurl,ftpdir,fname)
