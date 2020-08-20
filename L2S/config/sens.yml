@@ -2,7 +2,8 @@
 
 #WARNING: parameters should be in a list (even of size 1)
 
-params:
+#Main parameters of the experiment
+params: 
  #Size of the observation field ($N_y$ in the article)
  p: [18, 27, 36]
 
@@ -23,3 +24,4 @@ files:
  truth: 'simul-truth-T{T}-N{N}-seed{seed}.npz'
  hybrid: 'simul-hybrid-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}-N{N}-seed{seed}.npz'
  trunc: 'simul-trunc-T{T}-N{N}-seed{seed}.npz'
+ perfect: 'simul-perfect-dtObs{dtObs}-N{N}-seed{seed}.npz'

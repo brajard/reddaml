@@ -65,3 +65,9 @@ def load_data(indir,fname,ftpurl=None,ftpdir=None,):
         wget.download(full_url,out=indir)
     data = np.load(os.path.join(indir,fname))
     return data
+
+def rmse_norm(pred, ref, axis=(1,2)):
+    """Compute the relative RMSE between two field. By default average of the time and spatial axis"""
+    norm = 2*np.var(ref)
+    SE = np.square(pred-ref)/norm
+    return np.sqrt(np.mean(SE,axis=axis))
