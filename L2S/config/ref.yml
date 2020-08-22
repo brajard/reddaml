@@ -1,24 +1,24 @@
-#This file describes the key parameters of the reference experiment (Table 1. in the article)
+#This file describes the key parameters of the reference experiment for testing (Table 1. in the article)
 
 #WARNING: parameters should be in a list (even of size 1)
 
-params:
- #Size of the state ($N_x$ in the article)
- p: [36]
+#Size of the state ($N_x$ in the article)
+p: [36]
 
- #Observation time sampling ($\Delta_t$ in the article) in MTU
- dtObs: [0.05]
+#Observation time sampling ($\Delta_t$ in the article) in MTU
+dtObs: [0.05]
 
- #Observation standard deviation ($\sigma^{\rm o}$ in the article)
- std_o: [0.1]
+#Observation standard deviation ($\sigma^{\rm o}$ in the article)
+std_o: [0.1]
 
- #Fitering of the training set after DA (size of the window used for averaging in  number of time steps):
- Nfil_train: [1]
- 
- #Time length of the simulation
- T: [15]
+#Fitering of the training set after DA (size of the window used for averaging in  number of time steps):
+Nfil_train: [1]
 
-#Name of the files
-files:
- truth: 'simul-truth-T{T}-N{N}-seed{seed}.npz'
- hybrid: 'simul-hybrid-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}-N{N}-seed{seed}.npz'
+#Time length of the simulation
+T: [15.]
+
+#Number of ensemble in the simulation
+N: [20]
+
+#seed for the random initialisation of the simulation
+seed: [10]

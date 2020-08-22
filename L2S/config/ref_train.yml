@@ -32,16 +32,30 @@ seed: [5]
 #Type of obs (perfect/noisy)
 obstype: 'noisy'
 
+#da method for data assimilation
+damethod: 'EnKF_N'
+
+#Parameters of the damethod
+paramda:
+ N: 50
+
+
 #Directory where to save the simualtions
 savedir: 'simul/train'
 
 #Template name of the files used in the experiments
 template:
  #Initilisation file (generates by the true model)
- 'initname': 'init-N{N}-seed{seed}.npy'
+ initname': 'init-N{N}-seed{seed}.npy'
 
  #True simulation
- 'truth': 'simul-truth-T{T}-N{N}-seed{seed}.npz'
+ truth: 'simul-truth-T{T}-N{N}-seed{seed}.npz'
 
  #Trunc simulation
- 'trunc':  'simul-trunc-T{T}-N{N}-seed{seed}.npz'
+ trunc:  'simul-trunc-T{T}-N{N}-seed{seed}.npz'
+
+ #output of DA
+ da: 'analysis-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.npz'
+
+ #traininset
+ train: 'train-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.npz'
