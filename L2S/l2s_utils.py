@@ -1,11 +1,16 @@
 # Plot L96d
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.axes_grid1 import make_axes_locatable
+import copy
 
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+from dapper.mods.LorenzUV.lorenz95 import HMM_full, HMM_trunc as HMM_trunc_dapper
+from dapper.mods.LorenzUV.lorenz95 import LUV
+
+from dapper import with_rk4
 
 # Default value of paramter (overwrited using the configuration files)
-default_param = {'p': 36, 'std_o': 1, 'dtObs': 0.05, 'dt':0.01, 'Nfil_train':1, 'N': 20, 'seed': 10}
+default_param = {'p': 36, 'std_o': 1, 'dtObs': 0.05, 'dt':0.01, 'Nfil_train':1, 'N': 20, 'seed': 10, 'T':15.}
 
 
 def plot_L96_2D(xx,xxpred,tt,labels,vmin=None,vmax=None,vdelta=None):
@@ -38,3 +43,8 @@ def plot_L96_2D(xx,xxpred,tt,labels,vmin=None,vmax=None,vdelta=None):
 
 def other():
     print()
+
+# trunc HMM (no param)
+HMM_trunc = copy.deepcopy(HMM_trunc_dapper)
+HMM_trunc.Dyn.model = with_rk4(LUV.dxdt_trunc, autonom=True)
+

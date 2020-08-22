@@ -11,7 +11,11 @@ def load_config(filename):
         config = yaml.load(file, Loader = yaml.FullLoader)
     return(config)
 
-
+def save_config(d,filename):
+    """Save a dict to a config file"""
+    with open(filename, 'w') as outfile:
+        yaml.dump(d, outfile, default_flow_style=False)
+    
 def path(pathname):
     """Create the directory if it not exist and return the absolute name of the path"""
     return_path = os.path.realpath(pathname)

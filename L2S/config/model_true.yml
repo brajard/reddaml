@@ -1,0 +1,25 @@
+# Configuration file to run the simul script for the true model - can be used to run the scripts outside the jupyter notebooks
+
+#Starting from restart (True) or Spinup(False)
+restart : False
+
+#Time step of the model
+dt: 0.005
+
+#Spinup time
+spinup : 3.
+
+#Python module containig the model
+model_module: 'l2s_utils'
+
+#Type of model
+#physical: No neural network
+#hybrid: including neural network
+type: 'physical'
+
+#Name of the model variable in the module
+model_name: 'HMM_full'
+
+#Template name of the files to save
+name: 'truth'
+
