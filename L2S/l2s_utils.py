@@ -125,4 +125,82 @@ class Observator:
 		self.t_ = value
 		self.compute_tinds()
 
+from tensorflow.keras.layers import Input, Conv1D, BatchNormalization, Layer
+from tensorflow.keras import regularizers
+from tensorflow.keras import Model
+from  tensorflow.keras import backend as K
 
+def buildmodel(archi, m=36, reg=0.0487, batchlayer=1):
+	inputs = Input(shape=(m,1))
+	border = int(np.sum(np.array([kern//2 for nfil,kern,activ in archi])))
+	x = Periodic1DPadding(padding_size=border)(inputs)
+	x = BatchNormalization()(x)
+	for i, (nfil, kern, activ) in enumerate(archi):
+		if i == batchlayer:
+			x = BatchNormalization()(x)
+		x = Conv1D(nfil, kern, activation=activ)(x)
+		#x = BatchNormalization()(x)
+	output= Conv1D(1,1,activation='linear', kernel_regularizer=regularizers.l2(reg))(x)
+	return Model(inputs,output)
+
+def build_HMM_resolv(archi, m=36, reg=0.0487, batchlayer=1, weightfile=None, trunc=None):
+	"""
+	Build a hybrid model combining a physical core (trunc) and NN part
+	:param archi: architecture
+	:param m: size of the state
+	:param reg: regularization parameter of the model
+	:param batchlayer: position of the batch layer in the architecture
+	:param weightfile: (optional) file containing the weight model
+	:param trunc: truncated model in the dapper format
+	:return: hybrid model in the dapper format
+	"""
+	if trunc is None:
+		trunc = HMM_trunc
+	HMM_resolv = copy.deepcopy(trunc)
+	model_nn = buildmodel(archi, m=m, reg=reg, batchlayer=batchlayer)
+	if weightfile is not None:
+		model_nn.load_weights(weightfile)
+	def step(x0,t0,dt):
+		physical_step = with_rk4(LUV.dxdt_trunc, autonom=True)
+		ml_step = model_nn.predict
+		output = physical_step(x0,t0,dt) + dt*ml_step(x0[...,np.newaxis]).squeeze()
+		return output
+	HMM_resolv.Dyn.model = step
+	HMM_resolv.Dyn.nn = model_nn
+	return HMM_resolv
+
+
+class Periodic1DPadding(Layer):
+	"""Add a periodic padding to the output
+
+	# Arguments
+		padding_size: tuple giving the padding size (left, right)
+
+	# Output Shape
+		input_shape+left+right
+	"""
+
+
+	def __init__ (self, padding_size, **kwargs):
+		super(Periodic1DPadding, self).__init__(**kwargs)
+		if isinstance(padding_size, int):
+			padding_size = (padding_size, padding_size)
+		self.padding_size = tuple(padding_size)
+
+	def compute_output_shape( self, input_shape ):
+		space = input_shape[1:-1]
+		if len(space) != 1:
+			raise ValueError ('Input shape should be 1D with channel at last')
+		new_dim = space[0] + np.sum(self.padding_size)
+		return (input_shape[0],new_dim,input_shape[-1])
+
+
+
+	def build( self , input_shape):
+		super(Periodic1DPadding,self).build(input_shape)
+
+	def call( self, inputs ):
+		vleft, vright = self.padding_size
+		leftborder = inputs[:, -vleft:, :]
+		rigthborder = inputs[:, :vright, :]
+		return K.concatenate([leftborder, inputs, rigthborder], axis=-2)

@@ -1,5 +1,6 @@
 """
 Python script to compute a training set for a machine learning method. If the training is computed from observation, a DA algorithm is applied.
+run 'python compute_trainingset.py -h' to see the usage
 """
 
 
@@ -15,7 +16,7 @@ from dapper import EnKS, EnKF_N, with_recursion, print_averages, Chronology, Gau
 # Insert the common folder in the path (to be able to load python module)
 sys.path.insert(0,os.path.join(os.path.pardir,'common'))
 
-from toolbox import load_config, path
+from toolbox import load_config, path, my_lowfilter
 
 # Parse the commande line
 parser = argparse.ArgumentParser()
@@ -50,7 +51,7 @@ if params['obstype'] == 'perfect':
 	used_paramter = {'N','T','seed','dtObs'}
 	print('--> use perfect observations (no DA)')
 else:
-	used_paramter = { 'p', 'std_o', 'dtObs', 'std_m' ,'N','T','seed'}
+	used_paramter = { 'p', 'std_o', 'dtObs', 'std_m' ,'N','T','seed','Nfil_train'}
 	damethod = params['damethod']
 	paramda = params['paramda']
 	# Output of the DA
@@ -136,6 +137,9 @@ for dparam in seq_param:
 		print_averages(configda, avrgs, [], ['rmse_a', 'rmv_a'])
 
 		xx_train = stats.mu.a
+		if dparam['Nfil_train']>1:
+			print('Filtering data with size',dparam['Nfil_train'])
+			xx_train = my_lowfilter(xx_train, dparam['Nfil_train'])
 
 	# Compute traininset
 

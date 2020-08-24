@@ -75,3 +75,13 @@ def rmse_norm(pred, ref, axis=(1,2)):
     norm = 2*np.var(ref)
     SE = np.square(pred-ref)/norm
     return np.sqrt(np.mean(SE,axis=axis))
+
+def my_lowfilter(x, n):
+    """Low pass filter with boundary effects """
+    assert n%2 == 1
+    xlow= np.zeros((x.shape[0],x.shape[1]))
+    xpad = np.pad(x,pad_width=((n//2,n//2),(0,0)),mode='mean',stat_length=n)
+
+    for i in range(x.shape[1]):
+        xlow[:,i] = np.convolve(xpad[:,i],np.ones(n,)/n,mode='valid')
+    return xlow

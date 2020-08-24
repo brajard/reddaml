@@ -24,11 +24,17 @@ N: [20]
 seed: [10]
 
 #THE FOLLOWING PARAMETERS ARE CONSTANT (NOT IN A LIST)
-#Type of obs (perfect/noisy)
-obstype: 'noisy'
+archi:
+ - [43, 5, 'tanh']
+ - [28, 1, 'tanh']
+
+parnn:
+ reg: 0.072 #L2 regularization term on the last layer
+ batch_layer: 1 # Position of the batchlayer in the neural net (-1 for no batchlayer)
 
 #Directory where to save the simualtions
 savedir: 'simul/test'
+weightsdir: 'weights'
 
 #Template name of the files used in the experiments
 template:
@@ -40,3 +46,9 @@ template:
 
  #Trunc simulation
  'trunc':  'simul-trunc-T{T}-N{N}-seed{seed}.npz'
+
+ #Weights of the NN
+ weights: 'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.h5'
+
+#Hybrid simulation
+ hybrid: 'simul-hybrid-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}-N{N}-seed{seed}.npz'

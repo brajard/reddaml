@@ -55,8 +55,24 @@ else:
 	T_spinup = float(model['spinup'])
 	print('Starting after {} spinup time'.format(T_spinup))
 
-#Parmaeters to be set for a simulation
-used_paramter = {'N','T','seed'}
+#Import the model (in DAPPER HMM format)
+model_module = __import__(model['model_module'])
+
+if model['type'] == 'hybrid':
+	HMM_trunc = getattr(model_module,model['model_name'])
+	archi = params['archi']
+	parnn = params['parnn']
+	from l2s_utils import build_HMM_resolv
+	HMM = build_HMM_resolv(archi, reg=parnn['reg'], batchlayer=parnn['batch_layer'], trunc=HMM_trunc)
+	weightsdir = path(os.path.join(paths['rootdir'], params['weightsdir']))
+	weights_template = os.path.join(weightsdir,template['weights'])
+	# Parmaeters to be set for a simulation
+	used_paramter = { 'p', 'std_o', 'dtObs', 'std_m' ,'N','T','seed','Nfil_train'}
+	print("--> run a hybrid model")
+else:
+	HMM = getattr(model_module,model['model_name'])
+	print("--> run a purely physical model")
+	used_paramter = { 'N', 'T', 'seed' }
 
 #List of values for the used paramters (should in a list)
 lparam = {k:params.get(k,[default_param[k]]) for k in used_paramter}
@@ -64,19 +80,6 @@ lparam = {k:params.get(k,[default_param[k]]) for k in used_paramter}
 #Sequence of all the combination of the parameters
 seq_param = ParameterGrid(lparam)
 
-#Import the model (in DAPPER HMM format)
-model_module = __import__(model['model_module'])
-
-if model['type'] == 'hybrid':
-	HMM_trunc = getattr(model_module,model['model_name'])
-	archi = model['archi']
-	parnn = model['parnn']
-	from l2s_utils import build_HMM_resolv
-	HMM = build_HMM_resolv(archi, reg=parnn['reg'], batchlayer=parnn['batch_layer'], trunc=HMM_trunc)
-	print("--> run a hybrid model")
-else:
-	HMM = getattr(model_module,model['model_name'])
-	print("--> run a purely physical model")
 
 
 #Loop over all the experiments
@@ -117,6 +120,10 @@ for dparam in seq_param:
 
 	#Dyn: dynamical model, t: chronology
 	Dyn, chrono = HMM.Dyn, HMM.t
+
+	if model['type'] == 'hybrid':
+		nnfile = weights_template.format(**dparam)
+		Dyn.nn.load_weights(nnfile)
 
 	#Initiaze to simulation to zeros (number of time step, size of the ensemble, size of the state)
 	#Only work for 1D states vectors

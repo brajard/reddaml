@@ -1,0 +1,25 @@
+# Configuration file to run the simul script for the hybrid model - can be used to run the scripts outside the jupyter notebooks
+
+#Starting from restart (True) or Spinup(False)
+restart : True
+
+#Time step of the model
+dt: 0.01
+
+#Spinup time
+spinup : 3.
+
+#Python module containnig the model
+model_module: 'l2s_utils'
+
+#Type of model
+#physical: No neural network
+#hybrid: including neural network
+type: 'hybrid'
+
+#Name of the model truncated variable in the module
+model_name: 'HMM_trunc'
+
+
+#Template name of the files to save
+name: 'hybrid'
