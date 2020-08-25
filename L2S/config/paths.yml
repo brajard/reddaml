@@ -1,6 +1,8 @@
 # Root directory of the data directory where all the data/figures are saved
 # Warning: relative paths are indicated from the jupyter notebook/python script directory
-rootdir: '../data/L2S'
+
+#rootdir: '../data/L2S'
+rootdir : '/Volumes/da/julaja/reddaml/data/L2S'
 
 # Figure directory
 # If figdir is not set (or empty), the figures are only displayed on the notebook and not saved. TODO: test

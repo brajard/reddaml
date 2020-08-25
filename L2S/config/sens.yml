@@ -11,7 +11,7 @@ params:
  dtObs: [0.01, 0.05, 0.1, 0.15]
 
  #Observation standard deviation ($\sigma^{\rm o}$ in the article)
- std_o: [0.05, 0.1, 0.2, 0.5, 1., 2.]
+ std_o:  [0.05, 0.1, 0.2, 0.5, 1., 2.]
 
  #Fitering of the training set after DA (size of the window used for averaging in  number of time steps):
  Nfil_train: [1, 5]
