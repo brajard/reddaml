@@ -13,6 +13,9 @@ You can change the [config/paths.yml](config/paths.yml) to set the directory whe
 
 ### Run only the reference simulation
 
+
+### Run all the simulations
+
 Training true simulation:\
 ```python simul.py --paths config/paths.yml --params config/sens_train.yml --model config/model_true.yml```
 
@@ -25,7 +28,16 @@ Testing true simulation:\
 Testing truncated simulation:\
 ```python simul.py --paths config/paths.yml --params config/sens_test.yml --model config/model_trunc.yml```
 
-### Run all the simulations
+Compute the training set with noisy/sparse observation (using DA):\
+```python compute_trainingset.py --paths config/paths.yml --params config/sens_train.yml --model config/model_trunc.yml```
 
+Compute the training set with perfect observation (no DA):\
+```python compute_trainingset.py --paths config/paths.yml --params config/sens_train_po.yml --model config/model_trunc.yml```
+
+Train the NN with noisy/sparse observation:\
+```python train.py --paths config/paths.yml --params config/sens_train.yml```
+
+Train the NN with perfect observation:\
+```python train.py --paths config/paths.yml --params config/sens_train.yml```
 
 ## Run the model from the notebooks
