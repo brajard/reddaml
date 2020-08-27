@@ -56,9 +56,9 @@ seq_param = ParameterGrid(lparam)
 
 #Sequence to ignore at the beginning of the training set (DA spinup & filter borders)
 burn = params['burn']
-
-for dparam in seq_param:
-
+nn = len(seq_param)
+for i, dparam in enumerate(seq_param):
+	print('Training {}/{}:'.format(i,nn),dparam)
 	# Load the dataset
 	data = np.load(file_train.format(**dparam))
 	xx = data['x'][burn:]

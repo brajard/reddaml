@@ -62,7 +62,7 @@ parnn:
  batch_size: 33 # Mini batchsize used in training
  batch_layer: 1 # Position of the batchlayer in the neural net (-1 for no batchlayer)
  epochs: 100 # Number of epochs in training
- verbose: 1 # Verbose argument of the fit method
+ verbose: 0 # Verbose argument of the fit method
  seed: 2020
 
 #Directory where to save the simualtions
