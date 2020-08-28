@@ -84,16 +84,16 @@ template:
  trunc:  'simul-trunc-T{T}-N{N}-seed{seed}.npz'
 
  #output of DA
- da: 'analysis-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.npz'
+ da: 'analysis-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.npz'
 
  #traininset
- train: 'train-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.npz'
+ train: 'train-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.npz'
 
  #Weights of the NN
- weights: 'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.h5'
+ weights: 'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.h5'
 
  #History of the NN training
- history:  'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}.npz'
+ history:  'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.npz'
 
  #Hybrid simulation
  hybrid: 'simul-hybrid-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}-N{N}-seed{seed}.npz'
