@@ -41,23 +41,21 @@ def get_params(lparam,default_param):
         all_param.append({**default_param,**dparam_})
     return all_param
 
-def get_filenames(config, default_param):
-    """return a pandas DataFrame containing filenames using the templates defined in the config files (field 'files').
-    The field 'params' contains the values used to complete the filenames.
+def get_filenames(lparam, templates):
+    """return a pandas DataFrame containing filenames using the templates defined files.
+    lparam contains the values used to complete the filenames.
     Drop the duplicates"""
-    lparam = config['params']
-    files = config['files']
     seq_param = ParameterGrid(lparam)
-    filenames = dict()
+    dnames = dict()
     def get_name(row):
-        dparam = {**default_param,**dict(row)}
+        dparam = dict(row)
         dparam_convert = {k:convert(k,v) for k,v in dparam.items()}
-        return files[file].format(**dparam_convert)
-    for file in files:
-        filenames[file] = pd.DataFrame(seq_param)
-        filenames[file]['name']=filenames[file].apply(get_name, axis = 1)
-        filenames[file].drop_duplicates(subset=['name'],inplace=True)
-    return filenames
+        return templates[file].format(**dparam_convert)
+    for file in templates:
+        dnames[file] = pd.DataFrame(seq_param)
+        dnames[file]['name']=dnames[file].apply(get_name, axis = 1)
+        dnames[file].drop_duplicates(subset=['name'],inplace=True)
+    return dnames
 
 def load_data(indir,fname,ftpurl=None,ftpdir=None,):
     """Load data in the file fname from the the indir.
