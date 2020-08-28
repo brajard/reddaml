@@ -1,0 +1,50 @@
+#This file describes the key parameters of the reference experiment for the training (Table 1. in the article)
+
+#WARNING: parameters should be in a list (even of size 1)
+
+#Observation time sampling ($\Delta_t$ in the article) in MTU
+dtObs: [0.01, 0.05, 0.1, 0.15]
+
+#Time length of the simulation
+T: [1500.]
+
+#Number of ensemble in the simulation
+N: [20]
+
+#seed for the random initialisation of the simulation
+seed: [10]
+
+#THE FOLLOWING PARAMETERS ARE CONSTANT (NOT IN A LIST)
+# It means they cannot be used for a sensitivity experiment using only one configuration file
+
+archi:
+ - [43, 5, 'tanh']
+ - [28, 1, 'tanh']
+
+parnn:
+ reg: 0.072 #L2 regularization term on the last layer
+ batch_layer: 1 # Position of the batchlayer in the neural net (-1 for no batchlayer)
+
+#Directory where to save the simualtions
+savedir: 'simul/test'
+weightsdir: 'weights'
+
+#Template name of the files used in the experiments
+template:
+ #Initilisation file (generates by the true model)
+ initname: 'init-N{N}-seed{seed}.npy'
+
+ #True simulation
+ truth: 'simul-truth-T{T}-N{N}-seed{seed}.npz'
+
+ #Trunc simulation
+ trunc:  'simul-trunc-T{T}-N{N}-seed{seed}.npz'
+
+ #traininset
+ train: 'train-perfect-dtObs{dtObs}.npz'
+
+ #Weights of the NN
+ weights: 'weight-perfect-dtObs{dtObs}.h5'
+
+ #Hybrid simulation
+ hybrid: 'simul-perfect-p{p}-dtObs{dtObs}-N{N}-seed{seed}.npz'
