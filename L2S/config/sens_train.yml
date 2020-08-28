@@ -93,7 +93,7 @@ template:
  weights: 'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.h5'
 
  #History of the NN training
- history:  'weight-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.npz'
+ history:  'history-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.npz'
 
  #Hybrid simulation
  hybrid: 'simul-hybrid-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}-N{N}-seed{seed}.npz'
