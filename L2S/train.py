@@ -58,7 +58,7 @@ seq_param = ParameterGrid(lparam)
 burn = params['burn']
 nn = len(seq_param)
 for i, dparam in enumerate(seq_param):
-	print('Training {}/{}:'.format(i,nn),dparam)
+	print('Training {}/{}:'.format(i+1,nn),dparam)
 	# Load the dataset
 	data = np.load(file_train.format(**dparam))
 	xx = data['x'][burn:]
