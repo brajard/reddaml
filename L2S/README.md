@@ -38,6 +38,12 @@ Train the NN with noisy/sparse observation:\
 ```python train.py --paths config/paths.yml --params config/sens_train.yml```
 
 Train the NN with perfect observation:\
-```python train.py --paths config/paths.yml --params config/sens_train.yml```
+```python train.py --paths config/paths.yml --params config/sens_train_po.yml```
 
+Testing hybrid simulation:\
+```python simul.py --paths config/paths.yml --params config/sens_test.yml --model config/model_hybrid.yml```
+
+
+Testing hybrid simulation with perfect observations:\
+```python simul.py --paths config/paths.yml --params config/sens_test_po.yml --model config/model_hybrid.yml```
 ## Run the model from the notebooks
