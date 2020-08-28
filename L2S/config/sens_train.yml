@@ -37,6 +37,9 @@ obstype: 'noisy'
 #da method for data assimilation
 damethod: 'EnKF_N'
 
+#Random seed for da
+daseed: 30
+
 #Parameters of the damethod
 paramda:
  N: 50

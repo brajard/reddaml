@@ -119,7 +119,7 @@ for dparam in seq_param:
 			configda = EnKS(**paramda, liveplotting=False)
 		else:
 			raise NotImplementedError('DA method '+damethod+ ' is not implemented')
-
+		np.random.seed(dparam['seed'])
 		Obs, chrono = HMM_trunc.Obs, HMM_trunc.t
 		yy = np.zeros((chrono.KObs+1, Obs.M))
 		xxobs = np.zeros((chrono.KObs + 1, Obs.M))
