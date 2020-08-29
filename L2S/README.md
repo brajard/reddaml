@@ -16,7 +16,7 @@ For simplicity, it advised to run the jupyter notebook, but it is possible to ru
 After each notebook execution, you can use the notebook [Check-experiment](check-experiment.ipynb) to check the outputs produced (see the detail instructions in the corresponding notebooks).
 
 Here the jupyter notebook to run in the following order:\
-- [1.simul-phyical-models](1.simul-phyiscal-models.ipynb)
+- [1.simul-physical-models](1.simul-physical-models.ipynb)
 - [2.compute-trainingset](2.compute-trainingset.ipynb)
 - [3.training-NN.ipynb](3.training-NN.ipynb)
 - [4.simul_hybrid-models.ipynb](4.simul-hybrid-models.ipynb)
