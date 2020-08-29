@@ -18,3 +18,6 @@ The code can be used on other system but it has not been tested and the guidelin
 5) Activate the virtual environment: ```source activate reddaenv```
 
 6) Install the python packages: ```pip install -r requirements.txt```
+
+## Lorenz 2 scales experiment
+Go into the directory L2S and follow the instructions of the [readme file](L2S/README.md)
