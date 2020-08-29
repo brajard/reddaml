@@ -77,7 +77,8 @@ if model['type'] == 'physical':
 else:
 	raise NotImplementedError("Only physical is available as model type")
 
-for dparam in seq_param:
+for i, dparam in enumerate(seq_param):
+	print('Experiment {}/{}:'.format(i+1,nn),dparam)
 	#Load True simulation
 	data_truth = np.load(file_truth.format(**dparam))
 	xx = data_truth['xx']
