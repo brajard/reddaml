@@ -7,7 +7,7 @@ You can change the [config/paths.yml](config/paths.yml) to set the directory whe
 (TODO: estimate the space needed)
 
 ## Reproduce the figures of the paper
-You can reproduce the Fig.1 and Fig.2 of the article by running the notebooks [philtra-figure1](philtra-figure1.ipynb) and [philtra-figure2](philtra-figure2](philtra-figure2.ipynb). In the notebooks, you have the option to either download the data from ftp or to compute the data locally. To compute the data necessary for the figure 1, run the reference simulation (see the [Light run section](#light-run:-the-reference-simulation) ). To compute the data necessary for the figure 2, run the sensitivy experiments (see the [Long run section](#long-run:-all-the-simulations) ). Warning, the sensitivity experiment is long to run (typically 2 days).
+You can reproduce the Fig.1 and Fig.2 of the article by running the notebooks [philtra-figure1](philtra-figure1.ipynb) and [philtra-figure2](philtra-figure2.ipynb). In the notebooks, you have the option to either download the data from ftp or to compute the data locally. To compute the data necessary for the figure 1, run the reference simulation (see the [Light run section](#light-run:-the-reference-simulation) ). To compute the data necessary for the figure 2, run the sensitivy experiments (see the [Long run section](#long-run:-all-the-simulations) ). Warning, the sensitivity experiment is long to run (typically 2 days).
 
 ## Light run: the reference simulation
 You can test the algorithm by running only the reference experiment (used to produce the Fig. 1 of the article).
@@ -16,7 +16,7 @@ For simplicity, it advised to run the jupyter notebook, but it is possible to ru
 After each notebook execution, you can use the notebook [Check-experiment](check-experiment.ipynb) to check the outputs produced (see the detail instructions in the corresponding notebooks).
 
 Here the jupyter notebook to run in the following order:\
-- [1.simul-phyical-models](1.simul-phyiscal-models.ipynb)
+- [1.simul-physical-models](1.simul-physical-models.ipynb)
 - [2.compute-trainingset](2.compute-trainingset.ipynb)
 - [3.training-NN.ipynb](3.training-NN.ipynb)
 - [4.simul_hybrid-models.ipynb](4.simul-hybrid-models.ipynb)
