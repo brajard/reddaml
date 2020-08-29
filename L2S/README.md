@@ -3,7 +3,7 @@
 # Run the experiments of the Lorenz 2 scale model
 
 ## Configuration
-You can change the [config/paths.yml](config/paths.yml) to set the directory where to download the data
+You can change the [config/paths.yml](config/paths.yml) to set the directory where to save the data
 (TODO: estimate the space needed)
 
 ## Reproduce the figures of the paper
