@@ -77,6 +77,7 @@ if model['type'] == 'physical':
 else:
 	raise NotImplementedError("Only physical is available as model type")
 
+nn = len(seq_param)
 for i, dparam in enumerate(seq_param):
 	print('Experiment {}/{}:'.format(i+1,nn),dparam)
 	#Load True simulation
