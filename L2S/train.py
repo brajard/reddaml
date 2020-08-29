@@ -46,7 +46,7 @@ file_weights = os.path.join(weightsdir,template['weights'])
 #File template to save the history
 file_history = os.path.join(savedir, template['history'])
 
-used_paramter = { 'p', 'std_o', 'dtObs', 'std_m' ,'N','T','seed'}
+used_paramter = { 'p', 'std_o', 'dtObs', 'std_m' ,'N','T','seed','Nfil_train'}
 
 #List of values for the used paramters (should in a list)
 lparam = {k:params.get(k,[default_param[k]]) for k in used_paramter}
