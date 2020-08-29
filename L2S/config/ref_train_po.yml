@@ -69,4 +69,4 @@ template:
  history:  'weight-perfect-dtObs{dtObs}.npz'
 
  #Hybrid simulation
- hybrid: 'simul-perfect-p{p}-dtObs{dtObs}-N{N}-seed{seed}.npz'
+ hybrid: 'simul-perfect-dtObs{dtObs}-N{N}-seed{seed}.npz'

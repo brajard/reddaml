@@ -61,6 +61,9 @@ def load_data(indir,fname,ftpurl=None,ftpdir=None,):
     """Load data in the file fname from the the indir.
     If ftpurl and ftpdir are set, first download the data from the ftp url"""
     if ftpurl:
+        # Save the existing file
+        if os.path.isfile(os.path.join(indir,fname)):
+            os.rename(os.path.join(indir,fname),os.path.join(indir,fname+'.save'))
         assert ftpdir, 'if ftpurl is set, the argument ftpdir has to be set'
         full_url = os.path.join(ftpurl,ftpdir,fname)
         print(full_url)

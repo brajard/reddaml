@@ -84,7 +84,7 @@ template:
  #Trunc simulation
  trunc:  'simul-trunc-T{T}-N{N}-seed{seed}.npz'
 
-  #output of DA
+ #output of DA
  da: 'analysis-EnKFN-p{p}-dtObs{dtObs}-std_o{std_o}-filter{Nfil_train}.npz'
 
  #traininset
