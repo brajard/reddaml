@@ -8,6 +8,8 @@ You can change the [config/paths.yml](config/paths.yml) to set the directory whe
 
 ## Reproduce the figures of the paper
 You can reproduce the Fig.1 and Fig.2 of the article by running the notebooks [philtra-figure1](philtra-figure1.ipynb) and [philtra-figure2](philtra-figure2.ipynb). In the notebooks, you have the option to either download the data from ftp or to compute the data locally. To compute the data necessary for the figure 1, run the reference simulation (see the [Light run section](#light-run:-the-reference-simulation) ). To compute the data necessary for the figure 2, run the sensitivy experiments (see the [Long run section](#long-run:-all-the-simulations) ). Warning, the sensitivity experiment is long to run (typically 2 days).
+ ![Figure 1](philtra-fig1.png)
+ ![Figure 2](philtra-fig2.png)
 
 ## Light run: the reference simulation
 You can test the algorithm by running only the reference experiment (used to produce the Fig. 1 of the article).
