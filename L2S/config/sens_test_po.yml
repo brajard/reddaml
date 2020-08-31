@@ -47,4 +47,4 @@ template:
  weights: 'weight-perfect-dtObs{dtObs}.h5'
 
  #Hybrid simulation
- hybrid: 'simul-perfect-p{p}-dtObs{dtObs}-N{N}-seed{seed}.npz'
+ hybrid: 'simul-perfect-dtObs{dtObs}-N{N}-seed{seed}.npz'
