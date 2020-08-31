@@ -5,19 +5,19 @@ The code was tested on MacOS/Linux.
 
 ## Install the code
 
-Prerequesite: Python 3.
-This is a tutorial to install and run the code using virtual env on MacOS/linux system.
+Prerequesite: Python 3.7, conda\
+This is a tutorial to install and run the code using conda environments on MacOS/linux system.
 The code can be used on other system but it has not been tested and the guideline is not provided.
 
 1) Download or clone the github repository: ``` git clone https://github.com/brajard/reddaml.git```
 
-2) Make ```reddaml``` directory the working directory.
+2) ```cd reddaml```to make ```reddaml``` directory the working directory.
 
-3) Install virtual env (if it is not already done on your system):
-```python3 -m pip install --user virtualenv```
+3) Create a conda environment: ```conda create -n reddaenv python=3.7```
 
-4) Create a virtual environment: ```python3 -m venv venv```
-
-5) Activate the virtual environment: ```source venv/bin/activate```
+5) Activate the virtual environment: ```source activate reddaenv```
 
 6) Install the python packages: ```pip install -r requirements.txt```
+
+## Lorenz 2 scales experiment
+Go into the directory L2S and follow the instructions of the [readme file](L2S/README.md)

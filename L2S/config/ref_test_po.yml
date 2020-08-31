@@ -1,4 +1,4 @@
-#This file describes the key parameters of the reference experiment for the training (Table 1. in the article)
+#This file describes the key parameters of the reference experiment for the test (Table 1. in the article) with perfect observations
 
 #WARNING: parameters should be in a list (even of size 1)
 
