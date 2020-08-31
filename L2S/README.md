@@ -4,7 +4,7 @@
 
 ## Configuration
 You can change the [config/paths.yml](config/paths.yml) to set the directory where to save the data
-(around 20 Go of space available)
+(around 20 Go of space needed)
 
 ## Reproduce the figures of the paper
 You can reproduce the Fig.1 and Fig.2 of the article by running the notebooks [philtra-figure1](philtra-figure1.ipynb) and [philtra-figure2](philtra-figure2.ipynb). In the notebooks, you have the option to either download the data from ftp or to compute the data locally. To compute the data necessary for the figure 1, run the reference simulation (see the [Light run section](#light-run:-the-reference-simulation) ). To compute the data necessary for the figure 2, run the sensitivy experiments (see the [Long run section](#long-run:-all-the-simulations) ). Warning, the sensitivity experiment is long to run (typically 2 days).
