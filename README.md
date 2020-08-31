@@ -11,7 +11,7 @@ The code can be used on other system but it has not been tested and the guidelin
 
 1) Download or clone the github repository: ``` git clone https://github.com/brajard/reddaml.git```
 
-2) Make ```reddaml``` directory the working directory.
+2) ```cd reddaml```to make ```reddaml``` directory the working directory.
 
 3) Create a conda environment: ```conda create -n reddaenv python=3.7```
 
