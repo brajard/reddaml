@@ -25,7 +25,7 @@ Here the jupyter notebook to run in the following order:\
 
 
 ## Long run: all the simulations
-Running all the simulation needed to produce the figure 2 of the paper is more computational demanding (around 2 days of computation on a normal PC and ... of space needed).\
+Running all the simulation needed to produce Fig. 2 of the paper is more computational demanding (around 2 days of computation on a normal PC and 20 Go of space needed).\
 It is advised to run it directly using the scripts in a terminal but it is also possible to use the notebook as for the the reference simualation. You just have to modifiy the parameter file to be used in the arguments (sens_train.yml instead of ref_train.yml, sens_test.yml instead of ref_test.yml, etc.)
 
 Here are the scripts to run in the following order:
