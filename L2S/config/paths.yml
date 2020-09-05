@@ -2,15 +2,3 @@
 # Warning: relative paths are indicated from the jupyter notebook/python script directory
 
 rootdir: '../data/L2S'
-
-# Figure directory
-# If figdir is not set (or empty), the figures are only displayed on the notebook and not saved. TODO: test
-#figdir: 'fig'
-
-
-#Directory od the simulations
-#testdir: 'simul/test'
-#traindir: 'simul/train'
-
-#Directory of the weigts
-#weightdir: 'weights'
