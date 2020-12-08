@@ -43,7 +43,7 @@ def plot_L96_2D(xx,xxpred,tt,labels,vmin=None,vmax=None,vdelta=None):
 	ax[2].set_ylabel(labels[1][:2] + ' - ' + labels[0][:2] )
 	for i in delta:
 		fig.colorbar(delta[i],cax=cax[i],orientation='vertical')
-	return fig
+	return fig, ax
 
 def other():
     print()
